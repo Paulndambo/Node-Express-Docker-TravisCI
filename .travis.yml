@@ -18,6 +18,10 @@ script:
   - docker build -t simple_node_app .
   - docker tag simple_node_app 40781998/simple_node_app
 
-after_success:
+#after_success:
+#  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+#  - docker push 40781998/simple_node_app
+
+deploy:
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
   - docker push 40781998/simple_node_app
