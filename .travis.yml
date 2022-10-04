@@ -16,11 +16,11 @@ before_script:
 script:
   - docker --version # print the version for logging
   - docker build -t simple_node_app .
-  - docker tag simple_node_app 40781998/simple_node_app
+  - docker tag simple_node_app 40781998/simple_node_app:latest
 
 after_success:
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
-  - docker push 40781998/simple_node_app
+  - docker push 40781998/simple_node_app:latest
 
 #deploy:
 #  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
